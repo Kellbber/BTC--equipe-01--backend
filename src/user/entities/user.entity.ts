@@ -2,7 +2,7 @@ import { Institution } from "src/institution/entities/institution.entity";
 
 export class User {
   id?: string;
-  
+
   nome: string;
   email: string;
   cargo: string;
@@ -10,5 +10,5 @@ export class User {
   createdAt?: Date;
   updatedAt?: Date;
 
-  instituicoes?: Institution[]
+  instituicaoId?: Institution[]
 }
