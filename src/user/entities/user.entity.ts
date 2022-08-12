@@ -1,3 +1,4 @@
+import { Institution } from "../../institution/entities/institution.entity";
 
 
 export class User {
@@ -5,5 +6,5 @@ export class User {
   name: string;
   email: string;
   role: string;
-  institutionsId?:string;
+  institutions?: Institution[];
 }

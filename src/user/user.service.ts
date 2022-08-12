@@ -11,22 +11,22 @@ import { User } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
-
-
   constructor(private readonly prisma: PrismaService) {}
 
-  findAll(): Promise<User[]> {
+  findAll() {
     return this.prisma.user.findMany({
-      include:{
-        institutions:true,
-      }
+      include: {
+        institutions: true,
+      },
     });
   }
 
-  async findById(id: string): Promise<User> {
+  async findById(id: string) {
     const record = await this.prisma.user.findUnique({
       where: { id },
-
+      include: {
+        institutions: true,
+      },
     });
     if (!record) {
       throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
@@ -34,7 +34,7 @@ export class UserService {
     return record;
   }
 
-  async findOne(id: string): Promise<User> {
+  async findOne(id: string) {
     return this.findById(id);
   }
 
@@ -43,24 +43,73 @@ export class UserService {
 
     return this.prisma.user.create({
       data,
-
     });
   }
 
-  async update(id: string, dto: UpdateUserDto): Promise<User> {
-    await this.findById(id);
+  async update(id: string, dto: UpdateUserDto) {
+    const user = await this.findById(id);
 
-    const data: Partial<User> = { ...dto };
+    if (dto.instituitionId) {
+      let instExist = false;
+      user.institutions.map((institution) => {
+        if (institution.id === dto.instituitionId) {
+          instExist = true;
+        }
+      });
 
-    return this.prisma.user
-      .update({
-        where: { id },
-        data,
-
-      })
-      .catch(this.handleError);
+      if (instExist) {
+        return this.prisma.user
+          .update({
+            where: { id: id },
+            data: {
+              name: dto.name,
+              email: dto.email,
+              role: dto.role,
+              institutions: {
+                disconnect: {
+                  id: dto.instituitionId,
+                },
+              },
+            },
+            include: {
+              institutions: true,
+            },
+          })
+          .catch(this.handleError);
+      } else {
+        return this.prisma.user
+          .update({
+            where: { id: id },
+            data: {
+              name: dto.name,
+              email: dto.email,
+              role: dto.role,
+              institutions: {
+                connect: {
+                  id: dto.instituitionId,
+                },
+              },
+            },
+            include: {
+              institutions: true,
+            },
+          })
+          .catch(this.handleError);
+      }
+    } else {
+      return this.prisma.user.update({
+        where: { id: id },
+        data: {
+          name: dto.name,
+          email: dto.email,
+          role: dto.role,
+        },
+        include:{
+          institutions: true
+        }
+      });
+    }
   }
-
   async delete(id: string) {
     await this.findById(id);
     await this.prisma.user.delete({ where: { id } });
