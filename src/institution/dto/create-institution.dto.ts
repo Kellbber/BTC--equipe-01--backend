@@ -86,10 +86,6 @@ export class CreateInstitutionDto {
   })
   usersId: string;
 
-  @IsString()
-  @ApiProperty({
-    description: 'Complemento onde fica a instituição',
-    example: 'Instituição próxima ao campo São Bento',
-  })
+
   studantsId?: string;
 }

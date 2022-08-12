@@ -28,7 +28,7 @@ export class StudantsService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(dto: CreateStudantDto): Promise<Studant> {
-    
+
     const data: Prisma.StudantCreateInput = {
       name: dto.name,
       birth_date: dto.birth_date,
@@ -54,11 +54,23 @@ export class StudantsService {
   }
 
   findAll(): Promise<Studant[]> {
-    return this.prisma.studant.findMany();
+    return this.prisma.studant.findMany({include:{
+      institution:{
+        select:{
+          name: true
+        }
+      }
+    }});
   }
 
   async findById(id: string): Promise<Studant> {
-    const record = await this.prisma.studant.findUnique({ where: { id } });
+    const record = await this.prisma.studant.findUnique({ where: { id }, include:{
+      institution:{
+        select:{
+          name: true
+        }
+      }
+    } });
     if (!record) {
       throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
     }

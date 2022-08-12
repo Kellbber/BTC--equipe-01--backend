@@ -1,6 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNumber, IsPositive, IsString, Matches, MinLength } from "class-validator";
-import { EnumType } from "typescript";
+import { IsString, Matches } from "class-validator";
 
 export class CreateUserDto {
 

@@ -1,7 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { User } from 'src/user/entities/user.entity';
 import { handleError } from 'src/utility/handle-error.utility';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
 import { UpdateInstitutionDto } from './dto/update-institution.dto';
@@ -10,7 +9,7 @@ import { UpdateInstitutionDto } from './dto/update-institution.dto';
 export class InstitutionService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(userId: string, dto: CreateInstitutionDto) {
+  async create(dto: CreateInstitutionDto) {
     if (dto.usersId) {
       const data: Prisma.InstitutionCreateInput = {
         name: dto.name,
@@ -34,21 +33,15 @@ export class InstitutionService {
           include: {
             users: true,
           },
-        }).catch(handleError);
-    }else{
-      return  new NotFoundException("usuário necessário para criação")
+        })
+        .catch(handleError);
+    } else {
+      return new NotFoundException('usuário necessário para criação');
     }
   }
 
-  async findAll(user: User) {
+  async findAll() {
     const institutionList = await this.prisma.institution.findMany({
-      where: {
-        users: {
-          every: {
-            id: user.id,
-          },
-        },
-      },
       select: {
         id: true,
         name: true,
@@ -121,7 +114,7 @@ export class InstitutionService {
     });
   }
 
-  async update(userId: string, id: string, dto: UpdateInstitutionDto) {
+  async update(id: string, dto: UpdateInstitutionDto) {
     const InstitutionUser = await this.findById(id);
 
     if (dto.studantsId) {
@@ -183,6 +176,23 @@ export class InstitutionService {
           })
           .catch(handleError);
       }
+    }else{
+      return this.prisma.institution
+      .update({
+        where: { id: id },
+        data: {
+          name: dto.name,
+          fone: dto.fone,
+          cep: dto.cep,
+          city: dto.city,
+          state: dto.state,
+          public_place: dto.public_place,
+          district: dto.district,
+          number: dto.number,
+          complement: dto.complement,
+        },
+      })
+      .catch(handleError);
     }
   }
 
