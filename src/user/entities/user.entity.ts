@@ -1,8 +1,10 @@
+import { EnumType } from "typescript";
+
+
 export class User {
   id?: string;
-  nome: string;
+  name: string;
   email: string;
-  cargo: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  role: string;
+  institutionsId?:string;
 }

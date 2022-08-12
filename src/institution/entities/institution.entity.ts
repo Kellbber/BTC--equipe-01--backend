@@ -3,19 +3,17 @@ import { User } from 'src/user/entities/user.entity';
 
 export class Institution {
   id: string;
-  nome: string;
-  telefone: string;
+  name: string;
+  fone: string;
   cep: string;
-  numero: string;
-  logradouro: string;
-  bairro: string;
-  cidade: string;
-  estado: string;
-  complemento: string;
+  number: string;
+  public_place: string;
+  district: string;
+  city: string;
+  state: string;
+  complement: string;
 
-  usuarios: User[];
-  alunos?: Studant[];
+  users: User[];
+  studants?: Studant[];
 
-  createdAt?: Date;
-  updatedAt?: Date;
 }

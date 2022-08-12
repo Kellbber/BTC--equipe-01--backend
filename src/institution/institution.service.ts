@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { User } from 'src/user/entities/user.entity';
 import { handleError } from 'src/utility/handle-error.utility';
@@ -10,37 +11,39 @@ export class InstitutionService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(userId: string, dto: CreateInstitutionDto) {
-    if (dto.usuariosId) {
+    if (dto.usersId) {
+      const data: Prisma.InstitutionCreateInput = {
+        name: dto.name,
+        fone: dto.fone,
+        cep: dto.cep,
+        number: dto.number,
+        public_place: dto.public_place,
+        district: dto.district,
+        city: dto.city,
+        state: dto.state,
+        complement: dto.complement,
+        users: {
+          connect: {
+            id: dto.usersId,
+          },
+        },
+      };
       return await this.prisma.institution
         .create({
-          data: {
-            nome: dto.nome,
-            telefone: dto.telefone,
-            cep: dto.cep,
-            logradouro: dto.logradouro,
-            bairro: dto.bairro,
-            cidade: dto.cidade,
-            estado: dto.estado,
-            numero: dto.numero,
-            complemento: dto.complemento,
-            usuarios: {
-              connect: {
-                id: dto.usuariosId,
-              },
-            },
-          },
+          data,
           include: {
-            usuarios: true,
+            users: true,
           },
-        })
-        .catch(handleError);
+        }).catch(handleError);
+    }else{
+      return  new NotFoundException("usuário necessário para criação")
     }
   }
 
   async findAll(user: User) {
     const institutionList = await this.prisma.institution.findMany({
       where: {
-        usuarios: {
+        users: {
           every: {
             id: user.id,
           },
@@ -48,16 +51,16 @@ export class InstitutionService {
       },
       select: {
         id: true,
-        nome: true,
-        telefone: true,
+        name: true,
+        fone: true,
         cep: true,
-        cidade: true,
-        estado: true,
-        logradouro: true,
-        bairro: true,
-        numero: true,
-        complemento: true,
-        alunos: true,
+        city: true,
+        state: true,
+        public_place: true,
+        district: true,
+        number: true,
+        complement: true,
+        studants: true,
       },
     });
 
@@ -73,7 +76,7 @@ export class InstitutionService {
     const record = await this.prisma.institution.findUnique({
       where: { id },
       include: {
-        alunos: true,
+        studants: true,
       },
     });
 
@@ -90,28 +93,28 @@ export class InstitutionService {
     return await this.prisma.institution.findUnique({
       where: { id },
       select: {
-        nome: true,
-        telefone: true,
+        name: true,
+        fone: true,
         cep: true,
-        cidade: true,
-        estado: true,
-        logradouro: true,
-        bairro: true,
-        numero: true,
-        complemento: true,
-        alunos: {
+        city: true,
+        state: true,
+        public_place: true,
+        district: true,
+        number: true,
+        complement: true,
+        studants: {
           select: {
             id: true,
-            nome: true,
-            idade: true,
-            telefone: true,
+            name: true,
+            birth_date: true,
+            fone: true,
             url_image: true,
             cep: true,
-            cidade: true,
-            estado: true,
-            logradouro: true,
-            bairro: true,
-            consultas: true,
+            city: true,
+            district: true,
+            public_place: true,
+            state: true,
+            medical_check: true,
           },
         },
       },
@@ -121,10 +124,10 @@ export class InstitutionService {
   async update(userId: string, id: string, dto: UpdateInstitutionDto) {
     const InstitutionUser = await this.findById(id);
 
-    if (dto.alunosId) {
+    if (dto.studantsId) {
       let existAluno = false;
-      InstitutionUser.alunos.map((aluno) => {
-        if (aluno.id == dto.alunosId) {
+      InstitutionUser.studants.map((aluno) => {
+        if (aluno.id == dto.studantsId) {
           existAluno = true;
         }
       });
@@ -134,23 +137,23 @@ export class InstitutionService {
           .update({
             where: { id: id },
             data: {
-              nome: dto.nome,
-              telefone: dto.telefone,
+              name: dto.name,
+              fone: dto.fone,
               cep: dto.cep,
-              cidade: dto.cidade,
-              estado: dto.estado,
-              logradouro: dto.logradouro,
-              bairro: dto.bairro,
-              numero: dto.numero,
-              complemento: dto.complemento,
-              alunos: {
+              city: dto.city,
+              state: dto.state,
+              public_place: dto.public_place,
+              district: dto.district,
+              number: dto.number,
+              complement: dto.complement,
+              studants: {
                 disconnect: {
-                  id: dto.alunosId,
+                  id: dto.studantsId,
                 },
               },
             },
             include: {
-              alunos: true,
+              studants: true,
             },
           })
           .catch(handleError);
@@ -159,23 +162,23 @@ export class InstitutionService {
           .update({
             where: { id: id },
             data: {
-              nome: dto.nome,
-              telefone: dto.telefone,
+              name: dto.name,
+              fone: dto.fone,
               cep: dto.cep,
-              cidade: dto.cidade,
-              estado: dto.estado,
-              logradouro: dto.logradouro,
-              bairro: dto.bairro,
-              numero: dto.numero,
-              complemento: dto.complemento,
-              alunos: {
+              city: dto.city,
+              state: dto.state,
+              public_place: dto.public_place,
+              district: dto.district,
+              number: dto.number,
+              complement: dto.complement,
+              studants: {
                 connect: {
-                  id: dto.alunosId,
+                  id: dto.studantsId,
                 },
               },
             },
             include: {
-              alunos: true,
+              studants: true,
             },
           })
           .catch(handleError);

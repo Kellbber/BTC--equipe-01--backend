@@ -8,21 +8,21 @@ export class CreateStudantDto {
     description: 'Nome do aluno',
     example: 'Alex Faria',
   })
-  nome: string;
+  name: string;
 
   @IsNumber()
   @ApiProperty({
     description: 'Idade do aluno',
     example: 25,
   })
-  idade: number;
+  birth_date: number;
 
   @IsString()
   @ApiProperty({
     description: 'Telefone de contato do aluno',
     example: '62921212121',
   })
-  telefone?: string;
+  fone?: string;
 
   @IsString()
   @ApiProperty({
@@ -43,28 +43,28 @@ export class CreateStudantDto {
     description: 'Nome do logradouro onde o aluno residi',
     example: 'Rua José Silva Tavares',
   })
-  logradouro: string;
+  public_place: string;
 
   @IsString()
   @ApiProperty({
     description: 'Nome do bairro onde o aluno residi',
     example: 'Lagoinha',
   })
-  bairro: string;
+  district: string;
 
   @IsString()
   @ApiProperty({
     description: 'Nome da cidade onde o aluno residi',
     example: 'Alex Faria',
   })
-  cidade: string;
+  city: string;
 
   @IsString()
   @ApiProperty({
     description: 'Nome do estado onde o aluno residi',
     example: 'São Paulo',
   })
-  estado: string;
+  state: string;
 
   @IsUrl()
   @ApiProperty({
@@ -78,19 +78,19 @@ export class CreateStudantDto {
     description: 'Consultas agendadas para o aluno',
     example: '...',
   })
-  consultas: string;
+  medical_check: string;
 
   @IsString()
   @ApiProperty({
     description: 'Agendar consulta para o aluno',
     example: '...',
   })
-  agConsultas: string;
+  agMedical_check: string;
 
   @IsString()
   @ApiProperty({
     description: 'Id da instituição onde o aluno estuda',
     example: '074ac01e-ec6d-4277-b09f-bcdea2820a12',
   })
-  instituicaoId: string;
+  institutionId: string;
 }

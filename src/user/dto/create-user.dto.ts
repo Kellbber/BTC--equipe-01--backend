@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNumber, IsPositive, IsString, Matches, MinLength } from "class-validator";
+import { EnumType } from "typescript";
 
 export class CreateUserDto {
 
@@ -8,7 +9,7 @@ export class CreateUserDto {
     description: 'Nome completo',
     example: "Alex Faria"
   })
-  nome: string;
+  name: string;
 
   @IsString()
   @Matches(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i,{
@@ -22,15 +23,10 @@ export class CreateUserDto {
 
   @IsString()
   @ApiProperty({
-    description: "Cargo do usuário",
-    example: "Admin"
+    description: 'Cargo',
+    example: "campo"
   })
-  cargo: string
+  role: string;
 
-  @IsString()
-  @ApiProperty({
-    description: "Instituição do usuário",
-    example: 'instituição x'
-  })
-  instituicaoId: string
+  instituitionId?: string
 }

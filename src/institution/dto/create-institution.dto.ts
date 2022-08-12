@@ -8,7 +8,7 @@ export class CreateInstitutionDto {
     description: 'Nome completo da instituição',
     example: 'CE Joaquim Tavora',
   })
-  nome: string;
+  name: string;
 
   @IsString()
   @IsNotEmpty()
@@ -19,7 +19,7 @@ export class CreateInstitutionDto {
     description: 'Número de telefone da instituição',
     example: '(21)2203-0000',
   })
-  telefone: string;
+  fone: string;
 
   @IsString()
   @IsNotEmpty()
@@ -38,7 +38,7 @@ export class CreateInstitutionDto {
     description: 'Número do endereço da instituição',
     example: 'SN',
   })
-  numero: string;
+  number: string;
 
   @IsString()
   @IsNotEmpty()
@@ -46,7 +46,7 @@ export class CreateInstitutionDto {
     description: 'Endereço onde fica a instituição',
     example: 'Praça Prefeito Ferraz',
   })
-  logradouro: string;
+  public_place: string;
 
   @IsString()
   @IsNotEmpty()
@@ -54,7 +54,7 @@ export class CreateInstitutionDto {
     description: 'Bairro onde fica a instituição',
     example: 'Icaraí',
   })
-  bairro: string;
+  district: string;
 
   @IsString()
   @IsNotEmpty()
@@ -62,7 +62,7 @@ export class CreateInstitutionDto {
     description: 'Cidade onde fica a instituição',
     example: 'Niterói',
   })
-  cidade: string;
+  city: string;
 
   @IsString()
   @IsNotEmpty()
@@ -70,26 +70,26 @@ export class CreateInstitutionDto {
     description: 'Estado onde fica a instituição',
     example: 'RJ',
   })
-  estado: string;
+  state: string;
 
   @IsString()
   @ApiProperty({
     description: 'Complemento onde fica a instituição',
     example: 'Instituição próxima ao campo São Bento',
   })
-  complemento: string;
+  complement: string;
 
   @IsString()
   @ApiProperty({
     description: '',
     example: '36692efe-0aed-48a9-be57-d6735a4edad6',
   })
-  usuariosId: string;
+  usersId: string;
 
   @IsString()
   @ApiProperty({
     description: 'Complemento onde fica a instituição',
     example: 'Instituição próxima ao campo São Bento',
   })
-  alunosId: string;
+  studantsId?: string;
 }

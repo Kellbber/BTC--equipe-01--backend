@@ -1,21 +1,18 @@
 
 export class Studant {
+
   id?: string;
-  nome: string;
-  idade: number;
-  telefone?: string;
+  name: string;
+  birth_date: number;
+  fone?: string;
   cpf: string;
   cep: string;
-  logradouro: string;
-  bairro: string;
-  cidade: string;
-  estado: string;
+  public_place: string;
+  district: string;
+  city: string;
+  state: string;
   url_image?: string;
-  consultas: string;
-  agConsultas: string;
-
-  instituicaoId: string;
-
-  createdAt?: Date;
-  updatedAt?: Date;
+  medical_check: string;
+  agMedical_check: string;
+  institutionId: string;
 }
