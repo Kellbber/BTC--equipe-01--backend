@@ -28,13 +28,6 @@ export class CreateUserDto {
   cargo: string
 
   @IsString()
-  @ApiProperty({
-    description: "Instituição do usuário",
-    example: 'instituição x'
-  })
-  instituicaoId: string
-
-  @IsString()
   @MinLength(6)
   @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
     message: 'Senha muito fraca',

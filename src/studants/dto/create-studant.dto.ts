@@ -21,19 +21,19 @@ export class CreateStudantDto {
     description: 'Telefone de contato do aluno',
     example: '62921212121',
   })
-  telefone?: string;
+  telefone: string;
 
   @IsString()
   @ApiProperty({
     description: 'Id da instituição onde o aluno estuda',
     example: '074ac01e-ec6d-4277-b09f-bcdea2820a12',
   })
-  instituicaoId: string;
+  instituicao: string;
 
   @IsString()
   @ApiProperty({
     description: 'Id da consulta do aluno',
-    example: '....',
+    example: 'consulta1',
   })
-  consultaId: string;
+  consulta: string
 }

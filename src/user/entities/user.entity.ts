@@ -7,8 +7,7 @@ export class User {
   email: string;
   cargo: string;
   senha: string;
+
   createdAt?: Date;
   updatedAt?: Date;
-
-  instituicaoId?: Institution[]
 }

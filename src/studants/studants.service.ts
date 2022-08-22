@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handleError } from 'src/utility/handle-error.utility';
 import { CreateStudantDto } from './dto/create-studant.dto';
@@ -7,44 +8,34 @@ import { Studant } from './entities/studant.entity';
 
 @Injectable()
 export class StudantsService {
-  private studantsSelect = {
-    id: true,
-    nome: true,
-    data_nasc: true,
-    telefone: true,
-    consultas: true,
-    instituicaoId: true,
-  };
 
   constructor(private readonly prisma: PrismaService) {}
 
   async create(dto: CreateStudantDto): Promise<Studant> {
-    const data: Studant = {
+    const data: Prisma.StudantCreateInput = {
       ...dto,
+      instituicao: {
+        connect: {
+          id: dto.instituicao,
+        },
+      },
+      consulta: {
+        connect: {
+          id: dto.consulta,
+        }
+      }
     };
-    return await this.prisma.studant
-      .create({
-        data,
-        select: this.studantsSelect,
-      })
-      .catch(handleError);
+    return await this.prisma.studant.create({ data });
   }
 
   findAll(): Promise<Studant[]> {
-    return this.prisma.studant
-      .findMany({
-        select: this.studantsSelect,
-      })
-      .catch(handleError);
+    return this.prisma.studant.findMany();
   }
 
   async findById(id: string): Promise<Studant> {
-    const record = await this.prisma.studant.findUnique({
-      where: { id },
-      select: this.studantsSelect,
-    });
+    const record = await this.prisma.studant.findUnique({ where: { id } });
     if (!record) {
-      throw new NotFoundException(`Registro com o ID '${id}' não encontrado`);
+      throw new NotFoundException(`Registro com o ID '${id}' não encontrado`)
     }
     return record;
   }
@@ -56,14 +47,23 @@ export class StudantsService {
   async update(id: string, dto: UpdateStudantDto): Promise<Studant> {
     await this.findById(id);
 
-    const data: Partial<Studant> = {
+    const data: Partial<Prisma.StudantCreateInput> = {
       ...dto,
+      consulta: {
+        connect: {
+          id: dto.consulta,
+        }
+      },
+      instituicao: {
+        connect: {
+          id: dto.instituicao,
+        },
+      },
     };
     return this.prisma.studant
       .update({
         where: { id },
-        data,
-        select: this.studantsSelect,
+        data
       })
       .catch(handleError);
   }

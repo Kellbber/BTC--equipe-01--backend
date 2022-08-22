@@ -1,5 +1,5 @@
-import { Studant } from 'src/studants/entities/studant.entity';
-import { User } from 'src/user/entities/user.entity';
+import { Studant } from "@prisma/client";
+
 
 export class Institution {
   id: string;
@@ -13,8 +13,7 @@ export class Institution {
   estado: string;
   complemento: string;
 
-  usuarios: User[];
-  alunos?: Studant[];
+  alunosId?: Studant;
 
   createdAt?: Date;
   updatedAt?: Date;

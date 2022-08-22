@@ -18,8 +18,8 @@ export class CreateConsultDto {
 
   @IsString()
   @ApiProperty({
-    description: 'Aluno que será clinicado',
+    description: 'Id do aluno',
     example: "colocar o ID"
   })
-  alunosId: string
+  alunosId: []
 }
