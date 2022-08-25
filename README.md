@@ -1,73 +1,64 @@
+![logo_ColunaReta](https://user-images.githubusercontent.com/97872437/186258094-7be2b1ab-3e39-439d-bcd3-1144124ec1d9.png)
+
+<hr>
+
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+   <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge"/>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+### Tópicos
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+- [Descrição](#descrição)
+
+- [Funcionalidades](#funcionalidades)
+
+- [Ferramentas utilizadas](#ferramentas-utilizadas)
+
+- [Acesso ao projeto](#acesso-ao-projeto)
+
+- [Abrir e rodar o projeto](#abrir-e-rodar-o-projeto)
+
+- [Desenvolvedores](#desenvolvedores)
+
+## Descrição
+
+<p align="justify">
+ Trata-se de uma aplicação voltada para área de saúde, visando o bem estar de alunos, participantes de instituíções vinculadas ao projeto Coluna Reta. Nada mais justo que uma plataforma de interação com o médico responsável pela saúde dos alunos, onde o mesmo pode criar seu usuário, e cadastrar os alunos nas suas respectivas instituíções. Enquanto o admin fica responsável pelo cadastro das instituíções e averiguação dos dados da instituíção, dos médicos e dos alunos.
+
+Descrição do projeto ColunaReta, onde se tem a plataforma usada pelo médico que irá a campo cadastrar alunos e agendar consultas para os mesmos.
+
+  ![c](https://user-images.githubusercontent.com/97872437/186258281-b1baf9ea-beed-4d09-a809-649178abcd3d.png)
+
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Funcionalidades
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+:heavy_check_mark: `Funcionalidade 1:` Realizar cadastro dos médicos que sairão em campo, onde os mesmos podem cadastrar os alunos de cada instituíção.
 
-## Installation
+:heavy_check_mark: `Funcionalidade 2:` Armazenar dados do aluno como, nome, data de nascimento, telefone e a qual instituíção ele pertence.
 
-```bash
-$ npm install
-```
+:heavy_check_mark: `Funcionalidade 3:` Realizar o cadastro de consulta para os alunos cadastrados, atualizar informações dos alunos quando necessário.
 
-## Running the app
+## Ferramentas utilizadas
 
-```bash
-# development
-$ npm run start
+![919832-1](https://user-images.githubusercontent.com/97872437/186260423-f0f99754-ef46-493a-b686-42b6b3819249.png)
+![aj](https://user-images.githubusercontent.com/97872437/186260661-d90d2189-08fc-457c-a6df-554c40adb712.png) ![images-1](https://user-images.githubusercontent.com/97872437/186261211-e0082332-70b8-4847-9d10-41a40ac7c9a2.png)
 
-# watch mode
-$ npm run start:dev
+###
 
-# production mode
-$ npm run start:prod
-```
+## Acesso ao projeto
 
-## Test
+Você pode [acessar o código fonte do projeto](https://github.com/Kellbber/BTC--equipe-01--backend).
 
-```bash
-# unit tests
-$ npm run test
+## Abrir e rodar o projeto
 
-# e2e tests
-$ npm run test:e2e
+Após clonar o projeto para sua máquina, você pode abrir com a aplicação [VSCODE](https://code.visualstudio.com/).
 
-# test coverage
-$ npm run test:cov
-```
+Ou então, pode ir direto para a aplicação do [SWAGGER]().
 
-## Support
+## Desenvolvedores
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+| ![kb](https://user-images.githubusercontent.com/97872437/186535034-b0476853-7ceb-4f7f-afe3-ced7b361c8ca.jpg) | ![Foto Alex1](https://user-images.githubusercontent.com/97872437/186535832-7d390f56-b346-4b15-add2-9f76af832e00.jpg) | ![gabis](https://user-images.githubusercontent.com/97872437/186536402-b95e1787-f57a-4f8d-9ed6-bcc536fcf9be.jpg) | ![danilo](https://user-images.githubusercontent.com/97872437/186536852-9857bcf4-942c-434a-9f5e-98a16aee2f68.jpg) | ![eu](https://user-images.githubusercontent.com/97872437/186537635-fa4609fa-6c92-4d35-97a0-b8b435b7c7be.jpg) | 
+| :---: | :---: | :---: | :---: | :---:
+[<sub>Kellbber Bacarolo</sub>](https://github.com/Kellbber) | [<sub>Alex Faria</sub>](https://github.com/AlexFariaa) | [<sub>Gabriel Henrique</sub>](https://github.com/GabrielDevXD) | [<sub>Danilo Diniz</sub>](https://github.com/Niloxp753) | [<sub>Danilo Alves</sub>](https://github.com/ddanilooalves)
+[LinkedIn](https://www.linkedin.com/in/kellbber-barcarolo-71a848230/) | [LinkedIn](https://www.linkedin.com/in/alex-afaria/) | [LinkedIn](https://www.linkedin.com/in/gabrieldevxd/) | [LinkedIn](https://www.linkedin.com/in/danilo-diniz-dos-santos-7034b8136/) | [LinkedIn](https://www.linkedin.com/in/danilo-alves-de-aguiar-06832622b/)
