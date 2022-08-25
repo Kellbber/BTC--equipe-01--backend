@@ -1,14 +1,18 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString, Matches } from 'class-validator';
+import { Student } from 'src/student/entities/student.entity';
+import { Institution } from '../entities/institution.entity';
 
-export class CreateInstitutionDto {
+export class CreateInstitutionDto implements Institution {
+  id: string;
+
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
     description: 'Nome completo da instituição',
     example: 'CE Joaquim Tavora',
   })
-  nome: string;
+  name: string;
 
   @IsString()
   @IsNotEmpty()
@@ -19,7 +23,7 @@ export class CreateInstitutionDto {
     description: 'Número de telefone da instituição',
     example: '(21)2203-0000',
   })
-  telefone: string;
+  phone: string;
 
   @IsString()
   @IsNotEmpty()
@@ -38,7 +42,7 @@ export class CreateInstitutionDto {
     description: 'Número do endereço da instituição',
     example: 'SN',
   })
-  numero: string;
+  adressNumber: string;
 
   @IsString()
   @IsNotEmpty()
@@ -46,7 +50,7 @@ export class CreateInstitutionDto {
     description: 'Endereço onde fica a instituição',
     example: 'Praça Prefeito Ferraz',
   })
-  logradouro: string;
+  street: string;
 
   @IsString()
   @IsNotEmpty()
@@ -54,7 +58,7 @@ export class CreateInstitutionDto {
     description: 'Bairro onde fica a instituição',
     example: 'Icaraí',
   })
-  bairro: string;
+  district: string;
 
   @IsString()
   @IsNotEmpty()
@@ -62,7 +66,7 @@ export class CreateInstitutionDto {
     description: 'Cidade onde fica a instituição',
     example: 'Niterói',
   })
-  cidade: string;
+  city: string;
 
   @IsString()
   @IsNotEmpty()
@@ -70,19 +74,23 @@ export class CreateInstitutionDto {
     description: 'Estado onde fica a instituição',
     example: 'RJ',
   })
-  estado: string;
+  state: string;
 
   @IsString()
   @ApiProperty({
     description: 'Complemento onde fica a instituição',
     example: 'Instituição próxima ao campo São Bento',
   })
-  complemento: string;
+  complement: string;
 
+<<<<<<< HEAD
   @IsString()
   @ApiProperty({
     description: 'Id do aluno',
     example: 'Instituição próxima ao campo São Bento',
   })
   alunosId: string
+=======
+  students?: Student[];
+>>>>>>> 20efc7ccae1bd96a9ccbb4e6dff7bc853ef449f7
 }

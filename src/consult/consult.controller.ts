@@ -1,34 +1,62 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ConsultService } from './consult.service';
 import { CreateConsultDto } from './dto/create-consult.dto';
 import { UpdateConsultDto } from './dto/update-consult.dto';
 
+@ApiTags('consults')
 @Controller('consult')
 export class ConsultController {
   constructor(private readonly consultService: ConsultService) {}
 
   @Post()
+  @ApiOperation({
+    summary: 'Cria uma nova consulta',
+  })
   create(@Body() createConsultDto: CreateConsultDto) {
     return this.consultService.create(createConsultDto);
   }
 
-  @Get()
+  @Get('find-all')
+  @ApiOperation({
+    summary: 'Lista todas as consultas cadastrados',
+  })
   findAll() {
     return this.consultService.findAll();
   }
 
   @Get(':id')
+  @ApiOperation({
+    summary: 'Visualiza uma consulta pelo ID',
+  })
   findOne(@Param('id') id: string) {
-    return this.consultService.findOne(+id);
+    return this.consultService.findById(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateConsultDto: UpdateConsultDto) {
-    return this.consultService.update(+id, updateConsultDto);
+  @ApiOperation({
+    summary: 'Atualiza uma consulta pelo ID',
+  })
+  update(@Param('id') id: string, @Body() dto: UpdateConsultDto) {
+    return this.consultService.update(id, dto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.consultService.remove(+id);
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({
+    summary: 'Deleta uma consulta pelo ID',
+  })
+  delete(@Param('id') id: string) {
+    return this.consultService.delete(id);
   }
 }

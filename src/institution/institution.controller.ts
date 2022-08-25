@@ -1,22 +1,18 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
   HttpCode,
   HttpStatus,
-  UseGuards,
+  Param,
+  Patch,
+  Post,
 } from '@nestjs/common';
-import { InstitutionService } from './institution.service';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
+import { InstitutionService } from './institution.service';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { UpdateInstitutionDto } from './dto/update-institution.dto';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { User } from 'src/user/entities/user.entity';
-import { LoggedUser } from 'src/auth/logged-user.decorator';
-import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('institutions')
 @Controller('institutions')
@@ -27,18 +23,27 @@ export class InstitutionController {
   @ApiOperation({
     summary: 'Cria uma nova instituição',
   })
+<<<<<<< HEAD
   create(
     @Body() createInstitutionDto: CreateInstitutionDto,
   ) {
+=======
+  create(@Body() createInstitutionDto: CreateInstitutionDto) {
+>>>>>>> 20efc7ccae1bd96a9ccbb4e6dff7bc853ef449f7
     return this.institutionService.create(createInstitutionDto);
   }
 
-  @Get()
+  @Get('find-all')
   @ApiOperation({
     summary: 'Lista todas as instituições',
   })
+<<<<<<< HEAD
   findAll(@LoggedUser() user: User) {
     return this.institutionService.findAll( );
+=======
+  findAll() {
+    return this.institutionService.findAll();
+>>>>>>> 20efc7ccae1bd96a9ccbb4e6dff7bc853ef449f7
   }
 
   @Get(':id')
@@ -46,7 +51,7 @@ export class InstitutionController {
     summary: 'Visualiza uma instituição pelo ID',
   })
   findOne(@Param('id') id: string) {
-    return this.institutionService.findOne(id);
+    return this.institutionService.findById(id);
   }
 
   @Patch(':id')
@@ -55,9 +60,14 @@ export class InstitutionController {
   })
   update(
     @Param('id') id: string,
-    @Body() updateInstitutionDto: UpdateInstitutionDto,
+    @Body()
+    dto: UpdateInstitutionDto,
   ) {
+<<<<<<< HEAD
     return this.institutionService.update(id, updateInstitutionDto);
+=======
+    return this.institutionService.update(id, dto);
+>>>>>>> 20efc7ccae1bd96a9ccbb4e6dff7bc853ef449f7
   }
 
   @Delete(':id')

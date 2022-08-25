@@ -15,9 +15,9 @@ async function bootstrap() {
     .addTag('status')
     .addTag('auth')
     .addTag('users')
-    .addTag('studants')
     .addTag('institutions')
-    .addBearerAuth()
+    .addTag('students')
+    .addTag('consults')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

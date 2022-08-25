@@ -8,6 +8,7 @@ datasource db {
 }
 
 model User {
+<<<<<<< HEAD
   id    String @id @default(uuid())
   nome  String
   email String @unique
@@ -16,11 +17,22 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+=======
+  id              String   @id @default(uuid())
+  email           String   @unique
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  confirmPassword String
+  name            String
+  password        String
+  role            Role     @default(CAMPO)
+>>>>>>> 20efc7ccae1bd96a9ccbb4e6dff7bc853ef449f7
 
   @@map("user")
 }
 
 model Institution {
+<<<<<<< HEAD
   id          String @id @default(uuid())
   nome        String @unique
   telefone    String
@@ -36,10 +48,26 @@ model Institution {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+=======
+  id           String    @id @default(uuid())
+  cep          String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  adressNumber String
+  city         String
+  complement   String
+  district     String
+  name         String    @unique
+  phone        String
+  state        String
+  street       String
+  students     Student[]
+>>>>>>> 20efc7ccae1bd96a9ccbb4e6dff7bc853ef449f7
 
   @@map("institution")
 }
 
+<<<<<<< HEAD
 model Studant {
   id        String @id @default(uuid())
   nome      String @unique
@@ -54,20 +82,41 @@ model Studant {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+=======
+model Student {
+  id            String      @id @default(uuid())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  age           String
+  name          String      @unique
+  phone         String
+  institutionId String
+  institution   Institution @relation(fields: [institutionId], references: [id])
+  consult       Consult[]
+>>>>>>> 20efc7ccae1bd96a9ccbb4e6dff7bc853ef449f7
 
   @@map("studant")
 }
 
 model Consult {
-  id String @id @default(uuid())
-
-  agenda String
-  hora String
-
+  id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+<<<<<<< HEAD
 
   alunosId Studant[]
+=======
+  hour      String
+  schedule  String
+  studentId String
+  students  Student  @relation(fields: [studentId], references: [id])
+>>>>>>> 20efc7ccae1bd96a9ccbb4e6dff7bc853ef449f7
 
   @@map("consult")
+}
+
+enum Role {
+  BACKOFFICE
+  ADMIN
+  CAMPO
 }
