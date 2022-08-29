@@ -48,10 +48,7 @@ export class UserController {
     return this.userService.findAll(Number(page));
   }
 
-  @Roles(Role.ADMIN)
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Get(':id')
-  @UseGuards(AuthGuard('jwt'))
   @ApiBearerAuth()
   @ApiOperation({
     summary: 'Visualiza o usuário pelo ID',
