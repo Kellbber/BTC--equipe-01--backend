@@ -23,11 +23,11 @@
 ## Descrição
 
 <p align="justify">
- Trata-se de uma aplicação voltada para área de saúde, visando o bem estar de alunos, participantes de instituíções vinculadas ao projeto Coluna Reta. Nada mais justo que uma plataforma de interação com o médico responsável pela saúde dos alunos, onde o mesmo pode criar seu usuário, e cadastrar os alunos nas suas respectivas instituíções. Enquanto o admin fica responsável pelo cadastro das instituíções e averiguação dos dados da instituíção, dos médicos e dos alunos.
+ Trata-se de uma aplicação voltada para área de saúde, visando o bem estar de alunos, participantes de instituíções vinculadas ao projeto Coluna Reta. Podemos realizar os testes através da aplicação SWAGGER, para os amantes de API´s que gostam de olhar o código e estar por dentro das funcionalidades de cada comando.
 
-Descrição do projeto ColunaReta, onde se tem a plataforma usada pelo médico que irá a campo cadastrar alunos e agendar consultas para os mesmos.
+Descrição do projeto ColunaReta, onde se tem a plataforma usada para teste da API do Backend.
 
-  ![c](https://user-images.githubusercontent.com/97872437/186258281-b1baf9ea-beed-4d09-a809-649178abcd3d.png)
+  ![swagger](https://user-images.githubusercontent.com/97872437/187794364-6032d8e8-696b-4213-ae80-bae658c9bb67.png)
 
 </p>
 
@@ -54,7 +54,7 @@ Você pode [acessar o código fonte do projeto](https://github.com/Kellbber/BTC-
 
 Após clonar o projeto para sua máquina, você pode abrir com a aplicação [VSCODE](https://code.visualstudio.com/).
 
-Ou então, pode ir direto para a aplicação do [SWAGGER]().
+Ou então, pode ir direto para a aplicação do [SWAGGER](https://colunareta-backend.herokuapp.com/api).
 
 ## Desenvolvedores
 
