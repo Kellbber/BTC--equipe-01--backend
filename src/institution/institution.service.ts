@@ -1,15 +1,15 @@
-<<<<<<< HEAD
+
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { User } from 'src/user/entities/user.entity';
-=======
+
 import {
   BadRequestException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
->>>>>>> 20efc7ccae1bd96a9ccbb4e6dff7bc853ef449f7
+
 import { handleError } from 'src/utility/handle-error.utility';
 // import { PrismaService } from 'src/prisma/prisma.service';
 // import { User } from 'src/user/entities/user.entity';
@@ -59,7 +59,7 @@ export class InstitutionService {
       complemento: dto.complemento,
       alunosId: {
         connect: {
-          
+
         }
       }
     }

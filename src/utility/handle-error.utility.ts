@@ -67,5 +67,4 @@ export function ServerError(err: Error): undefined {
   throw new InternalServerErrorException(
     lastErrLine || 'Algum erro ocorreu ao executar a operação',
   );
-
 }
